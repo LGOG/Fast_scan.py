@@ -11,6 +11,7 @@ x = os.popen('rustscan -a '+IP).read()
 c = x.split()
 rust = c[153::]
 
+print (x)
 port_numbers = []
 
 #Takes only the port
