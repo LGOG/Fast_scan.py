@@ -2,8 +2,8 @@
 
 import os
 
-
-print ("😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵")
+print ("LG_OG")
+print (" ")
 
 IP = input("IP:? ")
 
@@ -30,3 +30,7 @@ For_nmap = (','.join(open_ports))
 #If you want to change the nmap options do it here
 #os.system ('nmap -A -<Add> -<change> -p ' + (For_nmap) + " " +(IP) )
 os.system ('nmap -A -p ' + (For_nmap) + " " +(IP) )
+
+print ("LG_OG")
+print (" ")
+
