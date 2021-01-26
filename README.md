@@ -7,9 +7,11 @@ https://github.com/RustScan/RustScan
 
 https://github.com/nmap/nmap
 
-how to use:
+
+first:
 chmod +x Fast_scan.py
 
+how to use:
 python3 Fast_scan.py
 
 put the IP you want to scan and let it run :)
