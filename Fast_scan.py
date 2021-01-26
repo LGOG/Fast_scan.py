@@ -29,5 +29,4 @@ For_nmap = (','.join(open_ports))
 
 #If you want to change the nmap options do it here
 #os.system ('nmap -A -<Add> -<change> -p ' + (For_nmap) + " " +(IP) )
-os.system ('nmap -sV -oN -sC -p ' + (For_nmap) + " " +(IP) )
-
+os.system ('nmap -sV -A -sC -p ' + (For_nmap) + " " +(IP))
