@@ -1,4 +1,5 @@
 # Fast_scan.py
+
 This script uses the fast scan of rustscan with the deep scan of nmap
 Make sure that you have both in order for it to work
 
