@@ -2,8 +2,8 @@
 
 import os
 
-print ("LG_OG")
-print (" ")
+
+print ("😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵")
 
 IP = input("IP:? ")
 
@@ -13,7 +13,7 @@ rust = c[153::]
 
 port_numbers = []
 
-#Takes only the ports
+#Takes only the port
 a = [i for i,x in enumerate(rust) if x == "port"]
 for port in a:
 	port_numbers.append(rust[port+1])
@@ -29,8 +29,5 @@ For_nmap = (','.join(open_ports))
 
 #If you want to change the nmap options do it here
 #os.system ('nmap -A -<Add> -<change> -p ' + (For_nmap) + " " +(IP) )
-os.system ('nmap -sC -p ' + (For_nmap) + " " +(IP) )
-
-print ("LG_OG")
-print (" ")
+os.system ('nmap -sV -oN -sC -p ' + (For_nmap) + " " +(IP) )
 
