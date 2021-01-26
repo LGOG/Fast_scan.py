@@ -8,6 +8,7 @@ https://github.com/nmap/nmap
 
 how to use:
 chmod +x Fast_scan.py
+
 python3 Fast_scan.py
 
 put the IP you want to scan and let it run :)
