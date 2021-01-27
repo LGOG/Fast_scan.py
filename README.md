@@ -11,13 +11,13 @@ https://github.com/OJ/gobuster
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-first:
+First:
 chmod +x Fast_scan.py
 
-how to use:
+How to use:
 python3 Fast_scan.py
 
-put the IP you want to scan and let it run :)
+Put the IP you want to scan and let it run :)
 
 If it will find any webserver just say yes or no for gobuster
 
