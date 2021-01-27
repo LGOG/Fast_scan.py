@@ -1,42 +1,59 @@
-😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵                                                                                   
+#!/usr/bin/pyhton
 
-This script uses the fast scan of rustscan with the deep scan of nmap and at the end, if it finds any web server open it will gobuster it as well!
-Make sure that you have all in order for it to work
+import os
 
-https://github.com/RustScan/RustScan
 
-https://github.com/nmap/nmap
+print ("😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵")
 
-https://github.com/OJ/gobuster
+IP = input("IP:? ")
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+os.system('echo rustscan -a '+IP)
+rust_input = os.popen('rustscan -a '+IP).read()
+c = rust_input.split()
+rust = c[153::]
 
-First:
-chmod +x Fast_scan.py
+print (rust_input)
 
-How to use:
-python3 Fast_scan.py
+port_numbers = []
 
-Put the IP you want to scan and let it run :)
+#Takes only the ports
+a = [i for i,x in enumerate(rust) if x == "port"]
+for port in a:
+	port_numbers.append(rust[port+1])
 
-If it will find any webserver just say yes or no for gobuster
+#Takes only the numbers 
+open_ports = []
+for i in port_numbers:
+    open_ports.append(i.split('/')[0])
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-How does it work?
-It uses rustscan on all 6535 ports.
-It returns a list of open ports.
-Then it takes the list and uses it with nmap.
-If any webserver port is open it will ask you if you want to scan it as well
+#Remove "" and spaces
+For_nmap = (','.join(open_ports))
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+#If you want to change the nmap options do it here
+os.system ('echo nmap -sV -A -sC -p ' + (For_nmap) + " " +(IP))
 
-nmap -sV -A -p- -sC <IP> - Will take you 20 minutes to scan all 6535 ports.
+os.system ('nmap -sV -A -sC -p ' + (For_nmap) + " " +(IP))
 
-Same scan with Fast_scan.py will take you 2 minutes!
+print ("The ip was: " + IP)
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+print (For_nmap)
+ans = "no"
+web_port=" "
 
-If you stop the nmap scan with "CTRL+C" but rustscan found a webserver you will still run gobuster
-
-😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵
+for port in open_ports:
+	if port == str(80) or port == str(8080) or port == str(8081) or port == str(443) or port == str(8000):
+		print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+		ans = input("Do you want to run gobuster?")
+		web_port = port
+		if ans == "yes" or ans == "y" or ans == "YES" or ans == "Y":
+			print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+			##If you want to change the gobuster options do it here
+			os.system('echo gobuster dir -w /usr/share/wordlists/dirb/common.txt -t 25 -x php,html,txt -q -u http://'+(IP)+":"+(web_port) )
+			os.system('gobuster dir -w /usr/share/wordlists/dirb/common.txt -t 25 -x php,html,txt -q -u http://'+(IP)+":"+(web_port) )
+		else: 
+			print ("Ok good luck! and have a good day! IP: "+ (IP))	
+	else:
+		pass
