@@ -19,12 +19,15 @@ python3 Fast_scan.py
 
 put the IP you want to scan and let it run :)
 
+If it will find any webserver just say yes or no for gobuster
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 How does it work?
 It uses rustscan on all 6535 ports.
 It returns a list of open ports.
 Then it takes the list and uses it with nmap.
+If any webserver are oprn it will ask you if you want to scan it as well
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -34,6 +37,6 @@ Same scan with Fast_scan.py will take you 2 minutes!
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-!!! If you stop the nmap scan with "CTRL+C" but rustscan found a webserver you will still run gobuster !!!
+If you stop the nmap scan with "CTRL+C" but rustscan found a webserver you will still run gobuster
 
 😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵
