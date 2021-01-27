@@ -17,23 +17,22 @@ print (rust_input)
 
 port_numbers = []
 
-#Takes only the port
+#Takes only the ports
 a = [i for i,x in enumerate(rust) if x == "port"]
 for port in a:
 	port_numbers.append(rust[port+1])
 
-#takes only the numbers 
+#Takes only the numbers 
 open_ports = []
 for i in port_numbers:
     open_ports.append(i.split('/')[0])
 
 
-#remove "" and spaces
+#Remove "" and spaces
 For_nmap = (','.join(open_ports))
 
 print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 #If you want to change the nmap options do it here
-#os.system ('nmap -A -<Add> -<change> -p ' + (For_nmap) + " " +(IP) )
 os.system ('echo nmap -sV -A -sC -p ' + (For_nmap) + " " +(IP))
 
 os.system ('nmap -sV -A -sC -p ' + (For_nmap) + " " +(IP))
@@ -51,7 +50,7 @@ for port in open_ports:
 		web_port = port
 		if ans == "yes" or ans == "y" or ans == "YES" or ans == "Y":
 			print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-			#edit this gobuster scan if you want 
+			##If you want to change the gobuster options do it here
 			os.system('echo gobuster dir -w /usr/share/wordlists/dirb/common.txt -t 25 -x php,html,txt -q -u http://'+(IP)+":"+(web_port) )
 			os.system('gobuster dir -w /usr/share/wordlists/dirb/common.txt -t 25 -x php,html,txt -q -u http://'+(IP)+":"+(web_port) )
 		else: 
