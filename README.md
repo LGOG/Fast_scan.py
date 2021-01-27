@@ -27,7 +27,7 @@ How does it work?
 It uses rustscan on all 6535 ports.
 It returns a list of open ports.
 Then it takes the list and uses it with nmap.
-If any webserver are oprn it will ask you if you want to scan it as well
+If any webserver port is open it will ask you if you want to scan it as well
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
