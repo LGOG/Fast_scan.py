@@ -31,16 +31,16 @@ for i in port_numbers:
 #remove "" and spaces
 For_nmap = (','.join(open_ports))
 
+print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 #If you want to change the nmap options do it here
 #os.system ('nmap -A -<Add> -<change> -p ' + (For_nmap) + " " +(IP) )
-print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 os.system ('echo nmap -sV -A -sC -p ' + (For_nmap) + " " +(IP))
 
 os.system ('nmap -sV -A -sC -p ' + (For_nmap) + " " +(IP))
 
 print ("The ip was: " + IP)
 
-#gobuster scan
+print (For_nmap)
 ans = "no"
 web_port=" "
 
@@ -51,8 +51,8 @@ for port in open_ports:
 		web_port = port
 		if ans == "yes" or ans == "y" or ans == "YES" or ans == "Y":
 			print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-			os.system('echo gobuster dir -w /usr/share/wordlists/dirb/common.txt -t 25 -x php,html,txt -q -u http://'+(IP)+":"+(web_port) )
 			#edit this gobuster scan if you want 
+			os.system('echo gobuster dir -w /usr/share/wordlists/dirb/common.txt -t 25 -x php,html,txt -q -u http://'+(IP)+":"+(web_port) )
 			os.system('gobuster dir -w /usr/share/wordlists/dirb/common.txt -t 25 -x php,html,txt -q -u http://'+(IP)+":"+(web_port) )
 		else: 
 			print ("Ok good luck! and have a good day! IP: "+ (IP))	
