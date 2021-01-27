@@ -1,17 +1,6 @@
 
-  
-####
-    ___                                            
-   / __)             _                             
- _| |__ _____  ___ _| |_     ___  ____ _____ ____  
- 
-(_   __|____ |/___|_   _)   /___)/ ___|____ |  _ \ 
+                                                                                            
 
-| |  / ___ |___ | | |_   |___ ( (___/ ___ | | | |
-
-|_|  \_____(___/   \__)  (___/ \____)_____|_| |_|
-                                                                                                                      
-####
 This script uses the fast scan of rustscan with the deep scan of nmap and at the end, if it finds any web server open it will gobuster it as well!
 Make sure that you have both in order for it to work
 
