@@ -7,6 +7,8 @@ print ("😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵
 
 IP = input("IP:? ")
 
+print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+os.system('echo rustscan -a '+IP)
 rust_input = os.popen('rustscan -a '+IP).read()
 c = rust_input.split()
 rust = c[153::]
@@ -31,6 +33,28 @@ For_nmap = (','.join(open_ports))
 
 #If you want to change the nmap options do it here
 #os.system ('nmap -A -<Add> -<change> -p ' + (For_nmap) + " " +(IP) )
+print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+os.system ('echo nmap -sV -A -sC -p ' + (For_nmap) + " " +(IP))
+
 os.system ('nmap -sV -A -sC -p ' + (For_nmap) + " " +(IP))
 
 print ("The ip was: " + IP)
+
+#gobuster scan
+ans = "no"
+web_port=" "
+
+for port in open_ports:
+	if port == str(80) or port == str(8080) or port == str(8081) or port == str(443) or port == str(8000):
+		print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+		ans = input("Do you want to run gobuster?")
+		web_port = port
+		if ans == "yes" or ans == "y" or ans == "YES" or ans == "Y":
+			print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+			os.system('echo gobuster dir -w /usr/share/wordlists/dirb/common.txt -t 25 -x php,html,txt -q -u http://'+(IP)+":"+(web_port) )
+			#edit this gobuster scan if you want 
+			os.system('gobuster dir -w /usr/share/wordlists/dirb/common.txt -t 25 -x php,html,txt -q -u http://'+(IP)+":"+(web_port) )
+		else: 
+			print ("Ok good luck! and have a good day! IP: "+ (IP))	
+	else:
+		pass
