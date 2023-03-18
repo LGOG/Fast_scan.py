@@ -1,59 +1,15 @@
-#!/usr/bin/pyhton
+This script will scan a host using the fastest, [Rustscan] first, then it will move the results over to Nmap for a deep scan, and at the end, if it finds any web server, it will scan it as well using Gobuster
+Before you can use this script, make sure that you have the following:
 
-import os
+**Rustscan installed:**
+1. wget https://github.com/RustScan/RustScan/releases/download/1.8.0/rustscan_1.8.0_amd64.deb
+2. dpkg -i rustscan_1.8.0_amd64.deb
 
+**Gobuster installed:**
+sudo apt update && sudo apt install gobuster
 
-print ("😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵😵" * 2)
+**Nmap installed:**
+sudo apt update && sudo apt-get install nmap
 
-IP = input("IP:? ")
-
-print ("++++++++++++++++++++++++++++++++++++++++++++++++++++" *3)
-os.system('echo rustscan -a '+IP)
-rust_input = os.popen('rustscan -a '+IP).read()
-c = rust_input.split()
-rust = c[153::]
-
-print (rust_input)
-
-port_numbers = []
-
-#Takes only the ports
-a = [i for i,x in enumerate(rust) if x == "port"]
-for port in a:
-	port_numbers.append(rust[port+1])
-
-#Takes only the numbers 
-open_ports = []
-for i in port_numbers:
-    open_ports.append(i.split('/')[0])
-
-
-#Remove "" and spaces
-For_nmap = (','.join(open_ports))
-
-print ("++++++++++++++++++++++++++++++++++++++++++++++++++++" *3)
-#If you want to change the nmap options do it here
-os.system ('echo nmap -sV -A -sC -p ' + (For_nmap) + " " +(IP))
-
-os.system ('nmap -sV -A -sC -p ' + (For_nmap) + " " +(IP))
-
-print ("The ip was: " + IP)
-
-print (For_nmap)
-ans = "no"
-web_port=" "
-
-for port in open_ports:
-	if port == str(80) or port == str(8080) or port == str(8081) or port == str(443) or port == str(8000):
-		print ("++++++++++++++++++++++++++++++++++++++++++++++++++++" *3)
-		ans = input("Do you want to run gobuster?")
-		web_port = port
-		if ans == "yes" or ans == "y" or ans == "YES" or ans == "Y":
-			print ("++++++++++++++++++++++++++++++++++++++++++++++++++++" *3)
-			##If you want to change the gobuster options do it here
-			os.system('echo gobuster dir -w /usr/share/wordlists/dirb/common.txt -t 25 -x php,html,txt -q -u http://'+(IP)+":"+(web_port) )
-			os.system('gobuster dir -w /usr/share/wordlists/dirb/common.txt -t 25 -x php,html,txt -q -u http://'+(IP)+":"+(web_port) )
-		else: 
-			print ("Ok good luck! and have a good day! IP: "+ (IP))	
-	else:
-		pass
+You can now run this script.
+python3 Fast_scan.py
