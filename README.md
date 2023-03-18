@@ -11,5 +11,5 @@ sudo apt update && sudo apt install gobuster
 **Nmap installed:**
 sudo apt update && sudo apt-get install nmap
 
-You can now run this script: /n
+You can now run this script:
 python3 Fast_scan.py
