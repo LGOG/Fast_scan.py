@@ -39,9 +39,9 @@ for port in port_list:
 		if ans == "yes" or ans == "y" or ans == "YES" or ans == "Y":
 			print ("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 			##If you want to change the gobuster options do it here
-			os.system('echo gobuster dir -w /usr/share/dirb/wordlists/common.txt -t 25 -x php,html,txt -q -u http://'+(IP)+":"+(web_port) )
-			os.system('gobuster dir -w /usr/share/dirb/wordlists/common.txt -t 25 -x php,html,txt -q -u http://'+(IP)+":"+(web_port) )
+			os.system('echo gobuster dir -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt -t 25 -x php,html,txt -q -u http://'+(IP)+":"+(web_port) )
+			os.system('gobuster dir -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt -t 25 -x php,html,txt -q -u http://'+(IP)+":"+(web_port) )
 		else: 
 			pass	
 	else:
-		print ("Ok good luck! and have a good day! IP: "+ (IP)
+		print ("Ok good luck! and have a good day! IP: "+ (IP))
