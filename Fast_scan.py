@@ -26,7 +26,7 @@ def run_nmap(ip_address, ports):
     Runs Nmap on the specified IP address and ports for detailed scanning.
     """
     print(f"{YELLOW}[~] Starting Nmap deep scan on {ip_address} for ports {ports}...{RESET}")
-    command = ['nmap', '-T4', '-sC', '-p', ports, ip_address]
+    command = ['nmap', '-T4', 'A', '-sC', '-p', ports, ip_address]
     print(f"{GREEN}[>] {' '.join(command)}{RESET}")
     result = subprocess.run(command, capture_output=True, text=True)
     print(result.stdout)
