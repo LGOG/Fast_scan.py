@@ -8,9 +8,7 @@ GREEN = '\033[92m'   # Green color
 RESET = '\033[0m'    # Reset color to default
 
 def run_rustscan(ip_address):
-    """
-    Runs RustScan on the specified IP address to quickly identify open ports.
-    """
+    # Runs RustScan on the specified IP address to quickly identify open ports.
     print(f"{YELLOW}[~] Starting RustScan on {ip_address}...{RESET}")
     command = ['rustscan', '--ulimit', '5000', '-a', ip_address]
     print(f"{GREEN}[>] {' '.join(command)}{RESET}")  # Print the full command syntax
@@ -20,9 +18,7 @@ def run_rustscan(ip_address):
     return re.findall(r'(\d+)/tcp', result.stdout)
 
 def run_nmap(ip_address, ports):
-    """
-    Runs Nmap on the specified IP address and ports for detailed scanning.
-    """
+    # Runs Nmap on the specified IP address and ports for detailed scanning.
     print(f"{YELLOW}[~] Starting Nmap deep scan on {ip_address} for ports {ports}...{RESET}")
     command = ['nmap', '-T4', '-sC', '-p', ports, ip_address]
     print(f"{GREEN}[>] {' '.join(command)}{RESET}")  # Print the full command syntax
@@ -31,18 +27,14 @@ def run_nmap(ip_address, ports):
     return result.stdout
 
 def find_web_ports(nmap_output):
-    """
-    Parses Nmap output to find ports serving web content based on service names.
+    #Parses Nmap output to find ports serving web content based on service names.
     Considers any service containing 'http' as a web service.
-    """
     web_services = re.findall(r'(\d+)/tcp open\s+([\w-]+)', nmap_output)
     return [port for port, service in web_services if 'http' in service]
     
 def run_gobuster(ip_address, port):
-    """
-    Runs Gobuster on the specified IP address and port to enumerate directories,
+    # Runs Gobuster on the specified IP address and port to enumerate directories,
     after asking the user for confirmation.
-    """
     user_input = input(f"Do you want to run Gobuster on {ip_address}:{port}? (y/n): ")
     if user_input.lower() in ['y', 'yes']:
         print(f"{YELLOW}[~] Starting Gobuster on {ip_address}:{port} with specified blacklist status codes...{RESET}")
@@ -56,9 +48,7 @@ def run_gobuster(ip_address, port):
         subprocess.run(command)
 
 def main():
-    """
-    Main function that orchestrates the network scanning process.
-    """
+    # Main function that orchestrates the network scanning process.
     parser = argparse.ArgumentParser(description='Fast Network Scanner')
     parser.add_argument('ip', help='IP address to scan')
     args = parser.parse_args()
