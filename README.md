@@ -1,5 +1,3 @@
-Fast Network Scanner
-Overview
 This script, Fast_scan.py, streamlines the process of conducting comprehensive network scans. It employs RustScan to quickly identify open ports on a target IP address, then passes these findings to Nmap for an in-depth analysis. If web servers are detected, the script optionally employs Gobuster to perform directory enumeration. This tool is designed to assist cybersecurity professionals and enthusiasts in efficiently assessing network vulnerabilities.
 
 Prerequisites
