@@ -1,7 +1,3 @@
-**Filename: `README.md`**
-
----
-
 # Fast Network Scanner
 
 ## Overview
