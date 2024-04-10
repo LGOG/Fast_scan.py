@@ -2,7 +2,7 @@ import subprocess
 import argparse
 import re
 
-# ANSI escape codes for colorizing text
+# colorizing text
 YELLOW = '\033[93m'  # Yellow color
 GREEN = '\033[92m'   # Green color
 RESET = '\033[0m'    # Reset color to default
