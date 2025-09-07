@@ -1,79 +1,101 @@
-# Fast Network Scanner
+Fast Network Scanner
+Overview
+Fast_scan.py is an advanced network scanning tool written in Python that automates the discovery of vulnerabilities in network services. It orchestrates a powerful sequence of external tools, including RustScan, Nmap, Nikto, Gobuster, and sqlmap, to provide a comprehensive and efficient security assessment. This tool is designed for cybersecurity professionals and enthusiasts seeking a streamlined workflow for network and web application security testing.
 
-## Overview
+Prerequisites
+To use Fast_scan.py successfully, ensure the following command-line tools are installed on your system.
 
-`Fast_scan.py` is an advanced network scanning tool designed to automate identifying vulnerabilities in network services. It integrates RustScan, Nmap, Gobuster, and now sqlmap to provide a comprehensive view of network security posture. RustScan is used for rapid port discovery, Nmap for detailed service analysis, Gobuster for web directory enumeration, and sqlmap for detecting SQL injection vulnerabilities. This tool is invaluable for cybersecurity professionals and enthusiasts seeking to conduct thorough network assessments efficiently.
+RustScan
+RustScan is used for rapid port discovery.
 
-## Prerequisites
+Bash
 
-Before using `Fast_scan.py,` ensure you have the following tools installed on your system:
+# Download and install RustScan
+wget https://github.com/RustScan/RustScan/releases/download/1.8.0/rustscan_1.8.0_amd64.deb
+sudo dpkg -i rustscan_1.8.0_amd64.deb
+Nmap
+Nmap is essential for in-depth service and version analysis.
 
-### RustScan
+Bash
 
-- Download and install RustScan:
-  ```
-  wget https://github.com/RustScan/RustScan/releases/download/1.8.0/rustscan_1.8.0_amd64.deb
-  dpkg -i rustscan_1.8.0_amd64.deb
-  ```
+# Install Nmap
+sudo apt update
+sudo apt install nmap
+Nikto
+Nikto is a web server scanner that identifies vulnerabilities and misconfigurations.
 
-### Gobuster
+Bash
 
-- Install Gobuster using apt:
-  ```
-  sudo apt update && sudo apt install gobuster
-  ```
+# Install Nikto
+sudo apt update
+sudo apt install nikto
+Gobuster
+Gobuster is used for web directory enumeration.
 
-### Nmap
+Bash
 
-- Install Nmap using apt:
-  ```
-  sudo apt update && sudo apt-get install nmap
-  ```
+# Install Gobuster
+sudo apt update
+sudo apt install gobuster
+sqlmap
+sqlmap is an automatic tool for detecting and exploiting SQL injection flaws.
 
-### sqlmap
+Bash
 
-- Install sqlmap (if not already installed):
-  ```
-  sudo apt install sqlmap
-  ```
+# Install sqlmap
+sudo apt update
+sudo apt install sqlmap
+smbclient
+smbclient is used for interacting with SMB/CIFS servers.
 
-## Usage
+Bash
 
-1. **Run the Script**: Execute the script with Python 3:
-   ```
-   python3 Fast_scan.py <target-IP>
-   ```
+# Install smbclient
+sudo apt update
+sudo apt install smbclient
+Usage
+Run the Script: Execute the script using Python 3, providing the target IP address as an argument.
 
-2. **View Results**: The script will display the scanning results directly in the terminal, including:
+Bash
 
-   - **RustScan**: Initial fast port scanning.
-   - **Nmap**: Detailed service analysis based on RustScan results.
-   - **Nikto**: Identifies security vulnerabilities on web servers and applications.
-   - **Gobuster**: Optional directory enumeration on detected web servers.
-   - **sqlmap**: Automated testing for SQL injection vulnerabilities on identified SQL services.
+python3 Fast_scan.py <target-IP>
+Save Output: To save the scan results to a file, use the -o or --output flag.
 
-## Features
+Bash
 
-- **Fast Port Scanning**: Uses RustScan for quick identification of open ports, streamlining the initial phase of network scanning.
-- **Comprehensive Analysis**: Employs Nmap for in-depth analysis of services running on the open ports, providing detailed security insights.
-- **Web Server Enumeration**: Integrates Gobuster for optional directory enumeration, helping uncover potential web vulnerabilities.
-- **SQL Vulnerability Detection**: Adds sqlmap to automatically test for SQL injection vulnerabilities on recognized SQL service ports, enhancing database security assessment.
+python3 Fast_scan.py <target-IP> -o <filename>
+Interactive Prompts: The script will prompt you before running more intensive scans, such as Nikto, Gobuster, smbclient, and sqlmap, allowing you to control the scanning process dynamically.
 
-## Customization
+View Results: The output will be displayed in the terminal and saved to the specified output file, if provided. The report is structured in the following order:
 
-- Adjust Nmap, Gobuster, and sqlmap parameters within the script to customize the scanning process according to specific requirements.
+RustScan: Fast port scan results.
 
-## Why Use Fast Network Scanner?
+Nmap: Detailed service and version information for discovered ports.
 
-Using `Fast_scan.py` allows cybersecurity professionals to conduct a multi-faceted network assessment easily. It combines the strengths of leading security tools into a single, streamlined process, enabling users to:
+SMBclient: Enumeration of SMB shares (if ports 139 or 445 are open).
 
-- Rapidly identify and analyze open ports.
-- Perform detailed service and vulnerability scans.
-- Enumerate web directories for hidden resources.
-- Detect and assess potential SQL injection points.
+Nikto: Web vulnerability scan (if HTTP/S services are detected).
 
-This integrated approach saves time and enhances the analytical depth, making it a powerful tool for proactive security assessments and penetration testing.
+Gobuster: Directory brute-forcing results (if HTTP/S services are detected).
 
-## Disclaimer
+sqlmap: SQL injection testing (if common SQL ports are open).
 
-`Fast_scan.py` is intended for lawful cybersecurity activities. Users should only scan networks and systems they are authorized to analyze. The creator of this script assumes no liability for misuse or any legal repercussions that arise from using the tool.
+Features
+Rapid Port Scanning: Utilizes RustScan for ultra-fast port discovery, saving significant time in the initial recon phase.
+
+Comprehensive Service Analysis: Integrates Nmap to provide in-depth service and version detection on open ports.
+
+Web Vulnerability Scanning: Automatically runs Nikto to identify common web server vulnerabilities.
+
+Web Enumeration: Seamlessly integrates Gobuster to enumerate web directories and hidden files on discovered web servers.
+
+SQL Injection Testing: Automatically invokes sqlmap to check for potential SQL injection vulnerabilities on detected database ports.
+
+SMB Share Enumeration: Scans for and enumerates SMB shares using smbclient, enhancing the scope of network assessment.
+
+Interactive Control: Provides interactive prompts to selectively run more aggressive scans, giving users granular control over the process.
+
+Persistent Logging: The optional -o flag allows all scan output to be saved to a file, creating a detailed record of the assessment.
+
+Disclaimer
+Fast_scan.py is intended for lawful and ethical cybersecurity activities. Users are solely responsible for ensuring they have explicit permission to scan the networks and systems they target. The creator and contributors of this script assume no liability for misuse or any legal consequences arising from its use.
