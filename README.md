@@ -48,6 +48,7 @@ Before using `Fast_scan.py,` ensure you have the following tools installed on yo
 
    - **RustScan**: Initial fast port scanning.
    - **Nmap**: Detailed service analysis based on RustScan results.
+   - **Nikto**: Identifies security vulnerabilities on web servers and applications.
    - **Gobuster**: Optional directory enumeration on detected web servers.
    - **sqlmap**: Automated testing for SQL injection vulnerabilities on identified SQL services.
 
