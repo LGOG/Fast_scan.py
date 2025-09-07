@@ -1,17 +1,3 @@
-### Overview
-
-The existing README is a solid foundation, but it can be improved to be more professional, structured, and user-friendly. Here are the key changes and improvements:
-
-  * **Clarity and Flow**: Restructured sections to follow a logical progression, starting with an overview and then moving to prerequisites, usage, features, and the conclusion.
-  * **Professional Tone**: Adjusted the language to be more concise and formal, better suited for a professional README.
-  * **Accuracy**: Corrected and updated the information to align with the Python script's actual functionality (e.g., the Nikto and smbclient features). The original README did not mention Nikto or smbclient, but the script contains code for them. The new README includes these.
-  * **Enhanced Readability**: Used improved Markdown formatting, including bullet points, code blocks, and bold text, to make the information easier to scan and understand.
-  * **Comprehensive Features**: Added new features that were present in the script but missing from the original README, such as the ability to save output to a file and the new smbclient and Nikto functionalities.
-
------
-
-### Improved README.md
-
 # Fast Network Scanner
 
 ## Overview
